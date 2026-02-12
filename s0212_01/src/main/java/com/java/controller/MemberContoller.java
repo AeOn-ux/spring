@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.java.dto.MemberDto;
 import com.java.service.MemberService;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -59,13 +61,24 @@ public class MemberContoller {
 		return "login";
 	}
 	
-	// 로그인확인
+	// 로그인확인 - session, cookie
 	@PostMapping("/member/login")
-	public String login(MemberDto mdto) {
+	public String login(MemberDto mdto, String saveId,
+			HttpServletResponse response) {
 		System.out.println("id,pw : "+mdto.getId()+","+mdto.getPw());
+		System.out.println("saveId : "+saveId);
+		// 아이디저장 - cookie
+		Cookie cookie = new Cookie("cook_id",mdto.getId());
+		if(saveId != null) {
+			cookie.setMaxAge(60*60*24*30); // 60초*60분*24시간*30일
+		}else {
+			cookie.setMaxAge(0);
+		}
+		response.addCookie(cookie);
 		//로그인 1개 객체가져오기
 		MemberDto memberDto = memberService.selectLogin(mdto);
 		if(memberDto != null) {
+			
 			System.out.println("id,pw 존재함");
 			session.setAttribute("session_id", memberDto.getId());
 			session.setAttribute("session_name", memberDto.getName());
