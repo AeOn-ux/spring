@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,25 +10,28 @@ pageEncoding="UTF-8"%>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pages - Login</title>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/login.css">
-  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/login.css">
   <script>
-  
-  if("${flag}"=="2"){
-	  alert("아이디 또는 패스워드가 일치하지 않습니다.");
-	  location.href="/member/login";
-  }
-  
+    if("${flag}"=="2"){
+    	alert("아이디 또는 패스워드가 일치하지 않습니다.");
+    	location.href="/member/login";
+    }
   </script>
 </head>
 
 <body>
   <header>
     <ul>
-     <li><a href="/member/join">회원가입</a></li>
-	 <li><a href="/member/login">로그인</a></li>
-	 <li><a href="/member/blist">고객행복센터</a></li>
+      <c:if test="${session_id == null }">
+		<li><a href="/member/join01">회원가입</a></li><span>|</span>
+		<li><a href="/member/login">로그인</a></li><span>|</span>
+	  </c:if>
+	  <c:if test="${session_id != null }">
+		<li><a href="/member/memberInfo">${session_name}님</a></li><span>|</span>
+		<li><a href="/member/logout">로그아웃</a></li><span>|</span>
+	  </c:if>
+	  <li><a href="/board/blist">고객행복센터</a></li><span>|</span>
       <li>배송지역검색</li> <span>|</span>
       <li>기프트카드 등록</li>
     </ul>

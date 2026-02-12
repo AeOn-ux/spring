@@ -6,9 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class BoardDto {
 
@@ -22,6 +21,4 @@ public class BoardDto {
 	private int bhit;
 	private String bfile;
 	private Timestamp bdate;
-	
-	
 }

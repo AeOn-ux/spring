@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.java</groupId>
-	<artifactId>s0212_05</artifactId>
+	<artifactId>s0212_01</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>s0212_05</name>
-	<description>스프링 프로젝트</description>
+	<name>s0212_01</name>
+	<description>스프링프로젝트</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -67,6 +67,7 @@
 			<version>4.0.1</version>
 			<scope>test</scope>
 		</dependency>
+		
 		<!-- 추가 -->
 		<!-- JSP 템플릿 엔진 -->
 		<dependency>

@@ -13,10 +13,8 @@ header {
   background: black;
   color: white;
 }
-
-header ul li a {text-decoration:none; cursor:pointer;  
-    color:white; font-size:13px; }
-	
+a{text-decoration: none; cursor:pointer;}
+header ul li a{color:white; font-size:13px; }
 
 header ul {
   margin: 8px 15px 0px 0;

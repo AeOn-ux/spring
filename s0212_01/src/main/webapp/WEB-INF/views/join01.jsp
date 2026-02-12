@@ -1,31 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="/css/style_header.css">
-		<link rel="stylesheet" type="text/css" href="/css/style_join01_terms.css">
-		<link rel="stylesheet" type="text/css" href="/css/style_footer.css">
+		<link rel="stylesheet" type="text/css" href="../css/style_header.css">
+		<link rel="stylesheet" type="text/css" href="../css/style_join01_terms.css">
+		<link rel="stylesheet" type="text/css" href="../css/style_footer.css">
 		<title>회원가입 - 약관동의</title>
 	</head>
 	<body>
 		<header>
 			<div id="nav_up">
 				<ul>
-					<li><a href="#">회원가입</a></li>
-					<li><a href="#">로그인</a></li>
-					<li><a href="#">고객행복센터</a></li>
+					<c:if test="${session_id == null }">
+		 				<li><a href="/member/join01">회원가입</a></li>
+		 				<li><a href="/member/login">로그인</a></li>
+	 				</c:if>
+	 				<c:if test="${session_id != null }">
+		 				<li><a href="/member/memberInfo">${session_name}님</a></li>
+		 				<li><a href="/member/logout">로그아웃</a></li>
+	 				</c:if>
+					<li><a href="/board/blist">고객행복센터</a></li>
 					<li><a href="#">배송지역검색</a></li>
 					<li><a href="#">기프트카드 등록</a></li>
 				</ul>
 			</div>	
 			<nav>
-				<a href="#"></a>
+				<a href="/"></a>
 				<ul>
 					<li><a href="#">COOKIT소개</a></li>
 					<li><a href="#">COOKIT메뉴</a></li>
@@ -49,7 +54,7 @@ pageEncoding="UTF-8"%>
 		
 		
 		<section>
-			<form name="agree" method="get" action="join02_info_input.html">
+			<form action="/member/join02" method="get" name="agree"  >
 				<div id="subBanner"></div>
 				<div id="locationN">
 					<ul>
@@ -192,7 +197,7 @@ pageEncoding="UTF-8"%>
 				</div>
 				
 				<div id="terms_button">
-					<input type="reset" value="취소하기" />
+					<input type="reset" onclick="javascript:location.href='/';" value="취소하기" />
 					<input type="submit" value="가입하기" />
 				</div>
 				

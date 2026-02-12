@@ -1,39 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>쿸킷</title>
+		<title>쿡킷</title>
 		<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="../css/style_main.css">
-	<script>
-		  if("${flag}"=="1"){
-			  alert("${session_name}님 환영합니다.");
-			  location.href="/";
-		  }else if("${flag}"=="0"){
-			  alert("로그아웃 되었습니다.");
-			  location.href="/";
-		  }
-	  
-	  </script>
+		<link rel="stylesheet" type="text/css" href="css/style_main.css">
+		<script>
+		    if("${flag}"=="1"){
+		    	alert("${session_name} 님 환영합니다.");
+		    	location.href="/";
+		    }else if("${flag}"=="0"){
+		    	alert("로그아웃 되었습니다.");
+		    	location.href="/";
+		    }
+		</script>
 	</head>
 	<body>
 	 	<header>
 	 		<div id="nav_up">
 	 			<ul>
-	 			<c:if test="${sessoin_id == null }">
-	 				<li><a href="/member/join01">회원가입</a></li>
-	 				<li><a href="/member/login">로그인</a></li>
-	 			</c:if>
-	 			<c:if test="${session_id != null }">
-	 				<li><a href="/member/logout">로그아웃</a></li>
-	 				<li><a href="/member/memberInfo">${session_name}님</a></li>
-	 			</c:if>
-	 				<li><a href="/member/blist">고객행복센터</a></li>
+	 				<c:if test="${session_id == null }">
+		 				<li><a href="/member/join01">회원가입</a></li>
+		 				<li><a href="/member/login">로그인</a></li>
+	 				</c:if>
+	 				<c:if test="${session_id != null }">
+		 				<li><a href="/member/memberInfo">${session_name}님</a></li>
+		 				<li><a href="/member/logout">로그아웃</a></li>
+	 				</c:if>
+	 				<li><a href="/board/blist">고객행복센터</a></li>
 	 				<li>배송정보검색</li>
 	 				<li>기프트카드 등록</li>
 	 			</ul>
