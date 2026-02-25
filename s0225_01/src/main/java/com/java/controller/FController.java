@@ -8,7 +8,6 @@ public class FController {
 
 	@GetMapping({"/","/index","/main"})
 	public String index() {
-		
 		return "index";
 	}
 	
