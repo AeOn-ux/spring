@@ -37,6 +37,9 @@ dependencies {
 	// 파일첨부 Source: https://mvnrepository.com/artifact/commons-io/commons-io 
 	implementation("commons-io:commons-io:2.20.0")
 	
+	// 파일첨부 Source: https://mvnrepository.com/artifact/commons-io/commons-io 
+	implementation("commons-io:commons-io:2.20.0")
+	
 	// JSP
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	// JSTL
@@ -44,7 +47,6 @@ dependencies {
 	implementation 'jakarta.servlet:jakarta.servlet-api' //스프링부트 3.0 이상
 	implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api' //스프링부트 3.0 이상
 	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl' //스프링부트 3.0 이상
-	
 }
 
 tasks.named('test') {
