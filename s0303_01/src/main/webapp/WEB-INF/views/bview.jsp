@@ -439,6 +439,8 @@
 	    	
 		    const name = $("#commentName").val().trim();
 		    const text = $("#commentText").val().trim();
+			const bno = ${board.bno};
+			
 		    
 	    	if (!name || !text) {
 	            alert('이름과 댓글 내용을 모두 입력해주세요.');
@@ -451,7 +453,7 @@
 	    		url:"/comment/save",
 	    		type:"post",
 	    		dataType:"text",
-	    		data:{"ccontent":text},
+	    		data:{"ccontent":text,"bno":bno},
 	    		success:function(data){
 	    			console.log("result : "+data);
 	    		},
