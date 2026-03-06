@@ -76,6 +76,25 @@ public class MemberController {
 		return "/member/step03";
 	}
 	
+	//07.회원가입페이지 step03 저장
+	@PostMapping("/member/step03")
+	public String step03(MemberDto mdto,
+			@RequestParam(name="phone1", required = false)String phone1,
+			@RequestParam(name="phone2", required = false)String phone2,
+			@RequestParam(name="phone3", required = false)String phone3,
+			@RequestParam(name="email1", required = false)String email1,
+			@RequestParam(name="email2", required = false)String email2,
+			Model model
+			) {
+		String phone = phone1+"-"+phone2+"-"+phone3;
+		String email = email1+"@"+email2;
+		mdto.setPhone(phone);
+		mdto.setEmail(email);
+		
+		
+		return "redirect:/member/step04";
+	}
+	
 	
 	
 }
