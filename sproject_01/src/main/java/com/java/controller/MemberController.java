@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.dto.MemberDto;
 import com.java.service.MemberService;
@@ -76,24 +77,47 @@ public class MemberController {
 		return "/member/step03";
 	}
 	
-	//07.회원가입페이지 step03 저장
+	//07.회원가입 step03저장
 	@PostMapping("/member/step03")
 	public String step03(MemberDto mdto,
-			@RequestParam(name="phone1", required = false)String phone1,
-			@RequestParam(name="phone2", required = false)String phone2,
-			@RequestParam(name="phone3", required = false)String phone3,
-			@RequestParam(name="email1", required = false)String email1,
-			@RequestParam(name="email2", required = false)String email2,
+			@RequestParam(name="phone1",required = false) String phone1,
+			@RequestParam(name="phone2",required = false) String phone2,
+			@RequestParam(name="phone3",required = false) String phone3,
+			@RequestParam(name="email1",required = false) String email1,
+			@RequestParam(name="email2",required = false) String email2,
 			Model model
 			) {
 		String phone = phone1+"-"+phone2+"-"+phone3;
-		String email = email1+"@"+email2;
+		String email = email1 +"@"+email2;
 		mdto.setPhone(phone);
 		mdto.setEmail(email);
-		
-		
-		return "redirect:/member/step04";
+		//service 전달
+		memberService.save(mdto);
+		return "redirect:/member/step04?id="+mdto.getId();
 	}
+	
+	//07-01.아이디 중복확인
+	@ResponseBody
+	@GetMapping("/member/idCheck")
+	public String idCheck(MemberDto mdto) {
+		String id = mdto.getId();
+		System.out.println("id : "+id);
+		//
+		String temp = "able";
+		MemberDto memberDto = memberService.findById(id);
+		if(memberDto!=null) temp = "unable"; 
+		return temp;
+	}
+	
+	//08.회원가입페이지 step04
+	@GetMapping("/member/step04")
+	public String step04( Model model,
+			@RequestParam(name="id",required = false) String id	) {
+		model.addAttribute("id",id);
+		return "member/step04";
+	}
+	
+	
 	
 	
 	
